@@ -1,7 +1,7 @@
 class Solution {
     public int compress(char[] chars) {
         String resString = "";
-        int index = 0;
+        
         for(int i =0; i < chars.length ; ){
             
             int j = i+1;
@@ -18,7 +18,8 @@ class Solution {
             }
              i = j;
         }
-           
+        
+        int index = 0;
         for(char c : resString.toCharArray()){
             chars[index++] = c;
         }
