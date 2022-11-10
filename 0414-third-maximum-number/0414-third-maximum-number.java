@@ -17,11 +17,9 @@ class Solution {
         
     }
     
-    private int getSetEl(Set sortedSet, int index){
+    private int getSetEl(Set<Integer> sortedSet, int index){
         int count = 0;
-        Iterator<Integer> it = sortedSet.iterator();
-        while(it.hasNext()){
-            Integer el = it.next();
+        for(Integer el : sortedSet){
             if(count == index){
                 return el.intValue();
             }
