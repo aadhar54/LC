@@ -2,32 +2,33 @@ class Solution {
     public int[][] matrixReshape(int[][] mat, int r, int c) {
         
         if(mat == null || mat.length == 0){
-            return mat;
-        }
-        int realRows = mat.length;
-        int realCols = mat[0].length;
-        
-        if((realRows * realCols) != (r * c)){
-            return mat;
+return mat;
         }
         
-        List<Integer> list = new ArrayList<>();
-        for(int row = 0; row < realRows; row++){
-            for(int col = 0; col < realCols; col++){
-                list.add(mat[row][col]);
+        int matRows = mat.length;
+        int matCols = mat[0].length;
+        
+        if((matRows * matCols) != (r * c)){
+            return mat;
+        }
+        
+        int res[][] = new int[r][c];
+        
+        int startCol = 0;
+        int startRow = 0;
+        for(int row = 0; row < mat.length; row++){
+            for(int col = 0; col < mat[row].length; col++){
+                
+                if(startCol < c){                               res[startRow][startCol] = mat[row][col];
+                    
+                }else{
+                    startCol = 0;
+                    startRow++;
+                    res[startRow][startCol] = mat[row][col];
+                }
+                startCol++;
             }
         }
-        
-        int[][] res = new int[r][c];
-        int index = 0;
-        for(int row = 0; row < r; row++){
-            for(int col = 0; col < c; col++){
-                res[row][col] = list.get(index);
-                index++;
-}
-        }
-        
         return res;
-        
     }
 }
